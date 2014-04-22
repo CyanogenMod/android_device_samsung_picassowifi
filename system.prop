@@ -3,3 +3,5 @@
 #
 
 lockscreen.rot_override=true
+ro.radio.noril=yes
+
