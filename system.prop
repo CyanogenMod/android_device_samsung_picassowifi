@@ -2,3 +2,4 @@
 # system.prop for picassowifi
 #
 
+lockscreen.rot_override=true
