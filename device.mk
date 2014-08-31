@@ -18,17 +18,17 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/samsung/klimtwifi/kernel
+LOCAL_KERNEL := device/samsung/picassowifi/kernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/klimtwifi/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/picassowifi/overlay
 
 include $(LOCAL_PATH)/BoardConfig.mk
 
-LOCAL_PATH := device/samsung/klimtwifi
+LOCAL_PATH := device/samsung/picassowifi
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -98,11 +98,6 @@ PRODUCT_PACKAGES += \
     libPaApi \
     libgdmcprov \
     mcDriverDaemon
-
-# Keylayouts
-PRODUCT_COPY_FILES += \
-    vendor/samsung/klimtwifi/proprietary/usr/idc/Synaptics_HID_TouchPad.idc:system/usr/idc/Synaptics_HID_TouchPad.idc \
-    vendor/samsung/klimtwifi/proprietary//usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl 
 
 # Media profile
 PRODUCT_COPY_FILES += \
@@ -199,5 +194,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/klimtwifi/klimtwifi-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/picassowifi/picassowifi-vendor.mk)
 $(call inherit-product, hardware/samsung_slsi/exynos5/exynos5.mk)

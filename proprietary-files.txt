@@ -4,13 +4,16 @@ vendor/firmware/srp_data.bin
 vendor/firmware/srp_vliw.bin
 
 # Bluetooth
-vendor/firmware/bcm4350.hcd
+vendor/firmware/bcm4335.hcd
+vendor/firmware/bcm4335_A0.hcd
+vendor/firmware/bcm4335_murata.hcd
+vendor/firmware/bcm4335_semco.hcd
 
 # OemCrypto
 vendor/lib/liboemcrypto.so
 
 # Camera
-# lib/hw/camera.universal5420.so:lib/hw/camera.vendor.universal5420.so
+# lib/hw/camera.universal5420.so
 # lib/libexynoscamera.so
 # lib/libvdis.so
 
@@ -28,10 +31,10 @@ bin/lpm
 lib/libQmageDecoder.so
 
 # Media
-vendor/firmware/fimc_is_fw2.bin:/system/vendor/firmware/fimc_is_fw2.bin
+vendor/firmware/fimc_is_fw2_IMX134.bin
 vendor/firmware/mfc_fw.bin
-vendor/firmware/setfile_6b2.bin:/system/vendor/firmware/setfile_6b2.bin
-vendor/firmware/setfile_imx134.bin:/system/vendor/firmware/setfile_imx134.bin
+vendor/firmware/setfile_6b2.bin
+vendor/firmware/setfile_imx134.bin
 
 # Mobicore
 app/FFFFFFFF000000000000000000000001.drbin
@@ -47,13 +50,13 @@ app/mcRegistry/ffffffff000000000000000000000008.tlbin
 app/mcRegistry/ffffffff000000000000000000000009.tlbin
 app/mcRegistry/ffffffff00000000000000000000000a.tlbin
 app/mcRegistry/ffffffff00000000000000000000000b.tlbin
+app/mcRegistry/ffffffff00000000000000000000000c.tlbin
+app/mcRegistry/ffffffff00000000000000000000000d.tlbin
 app/mcRegistry/ffffffff00000000000000000000000f.tlbin
 app/mcRegistry/ffffffff000000000000000000000010.tlbin
 app/mcRegistry/ffffffff000000000000000000000011.tlbin
-app/mcRegistry/ffffffff000000000000000000000018.tlbin
 app/mcRegistry/ffffffffd00000000000000000000004.tlbin
 app/mcRegistry/ffffffffd0000000000000000000000a.tlbin
-app/mcRegistry/ffffffffd0000000000000000000000e.tlbin
 bin/scranton_RD
 
 # Sensors
@@ -75,4 +78,3 @@ etc/wifi/nvram_net.txt
 # Input
 usr/idc/Synaptics_HID_TouchPad.idc
 usr/keylayout/gpio-keys.kl
-usr/keylayout/sec_touchkey.kl

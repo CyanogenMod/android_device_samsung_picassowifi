@@ -14,12 +14,12 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/klimtwifi
+LOCAL_PATH := device/samsung/picassowifi
 
 BOARD_VENDOR := samsung
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := klimtwifi
+TARGET_OTA_ASSERT_DEVICE := picassowifi
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := universal5420
@@ -51,10 +51,8 @@ TARGET_BUILD_VARIANT := user
 # Kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := klimtwifi_00_defconfig
-TARGET_KERNEL_SOURCE := kernel/samsung/exynos5420
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
-#TARGET_PREBUILT_KERNEL := device/samsung/klimtwifi/kernel
+TARGET_KERNEL_CONFIG := cyanogenmod_picassowifi_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/picassowifi
 
 # Boot animation
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -94,7 +92,7 @@ RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-    device/samsung/klimtwifi/sepolicy
+    device/samsung/picassowifi/sepolicy
 
 BOARD_SEPOLICY_UNION := \
     file_contexts 
@@ -157,4 +155,4 @@ WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin"
 
 # inherit from the proprietary version
--include vendor/samsung/klimtwifi/BoardConfigVendor.mk
+-include vendor/samsung/picassowifi/BoardConfigVendor.mk

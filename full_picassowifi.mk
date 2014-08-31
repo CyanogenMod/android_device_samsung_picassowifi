@@ -15,12 +15,12 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from klimtwifi device
-$(call inherit-product, device/samsung/klimtwifi/klimtwifi.mk)
+# Inherit from picassowifi device
+$(call inherit-product, device/samsung/picassowifi/device.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_klimtwifi
-PRODUCT_DEVICE := klimtwifi
+PRODUCT_NAME := full_picassowifi
+PRODUCT_DEVICE := picassowifi
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_MODEL := SM-T700
+PRODUCT_MODEL := SM-T520
