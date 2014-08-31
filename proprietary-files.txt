@@ -1,0 +1,78 @@
+# Audio
+vendor/firmware/srp_cga.bin
+vendor/firmware/srp_data.bin
+vendor/firmware/srp_vliw.bin
+
+# Bluetooth
+vendor/firmware/bcm4350.hcd
+
+# OemCrypto
+vendor/lib/liboemcrypto.so
+
+# Camera
+# lib/hw/camera.universal5420.so:lib/hw/camera.vendor.universal5420.so
+# lib/libexynoscamera.so
+# lib/libvdis.so
+
+# Graphics
+vendor/lib/egl/libGLES_mali.so
+vendor/lib/libmalicore.bc
+vendor/lib/libRSDriverArm.so
+
+# Bcc
+lib/libbcc.sha1.so
+lib/libbcc.so
+
+# LPM
+bin/lpm
+lib/libQmageDecoder.so
+
+# Media
+vendor/firmware/fimc_is_fw2.bin:/system/vendor/firmware/fimc_is_fw2.bin
+vendor/firmware/mfc_fw.bin
+vendor/firmware/setfile_6b2.bin:/system/vendor/firmware/setfile_6b2.bin
+vendor/firmware/setfile_imx134.bin:/system/vendor/firmware/setfile_imx134.bin
+
+# Mobicore
+app/FFFFFFFF000000000000000000000001.drbin
+app/mcRegistry/00060308060501020000000000000000.tlbin
+app/mcRegistry/02010000080300030000000000000000.tlbin
+app/mcRegistry/07010000000000000000000000000000.tlbin
+app/mcRegistry/07060000000000000000000000000000.tlbin
+app/mcRegistry/ffffffff000000000000000000000003.tlbin
+app/mcRegistry/ffffffff000000000000000000000004.tlbin
+app/mcRegistry/ffffffff000000000000000000000005.tlbin
+app/mcRegistry/ffffffff000000000000000000000007.tlbin
+app/mcRegistry/ffffffff000000000000000000000008.tlbin
+app/mcRegistry/ffffffff000000000000000000000009.tlbin
+app/mcRegistry/ffffffff00000000000000000000000a.tlbin
+app/mcRegistry/ffffffff00000000000000000000000b.tlbin
+app/mcRegistry/ffffffff00000000000000000000000f.tlbin
+app/mcRegistry/ffffffff000000000000000000000010.tlbin
+app/mcRegistry/ffffffff000000000000000000000011.tlbin
+app/mcRegistry/ffffffff000000000000000000000018.tlbin
+app/mcRegistry/ffffffffd00000000000000000000004.tlbin
+app/mcRegistry/ffffffffd0000000000000000000000a.tlbin
+app/mcRegistry/ffffffffd0000000000000000000000e.tlbin
+bin/scranton_RD
+
+# Sensors
+lib/hw/sensors.universal5420.so
+
+# Widevine
+# vendor/lib/libwvm.so
+# vendor/lib/libWVStreamControlAPI_L1.so
+
+# Wifi
+etc/wifi/bcmdhd_apsta.bin
+etc/wifi/bcmdhd_mfg.bin
+etc/wifi/bcmdhd_sta.bin
+etc/wifi/bcmdhd_ibss.bin
+etc/wifi/cred.conf
+etc/wifi/nvram_mfg.txt
+etc/wifi/nvram_net.txt
+
+# Input
+usr/idc/Synaptics_HID_TouchPad.idc
+usr/keylayout/gpio-keys.kl
+usr/keylayout/sec_touchkey.kl

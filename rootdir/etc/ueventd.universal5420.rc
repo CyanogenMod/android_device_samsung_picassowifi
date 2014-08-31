@@ -1,0 +1,77 @@
+/dev/mali0                0666   system     system
+/dev/ion                  0666   system     system
+/dev/exynos-mem           0660   system     graphics
+/dev/video6               0660   media      media
+/dev/video7               0660   media      media
+/dev/video8               0660   media      media
+/dev/video9               0660   media      media
+/dev/video0               0660   system     camera
+/dev/video1               0660   system     camera
+/dev/video2               0660   system     camera
+/dev/video3               0660   system     camera
+/dev/video20              0660   system     system
+/dev/fimg2d               0666   system     graphics
+/dev/i2c-2                0660   system     system
+/dev/HPD                  0660   system     system
+
+# gscalers
+/dev/video23              0660   media      graphics
+/dev/video26              0660   media      graphics
+
+/dev/video24              0660   media      graphics
+/dev/video27              0660   media      graphics
+
+/dev/video37              0660   media      camera
+
+# scalers
+/dev/video50              0660   media      graphics
+/dev/video51              0660   media      graphics
+/dev/video52              0660   media      graphics
+
+/dev/v4l-subdev*          0660   system     camera
+/dev/media0               0660   system     camera
+/dev/media1               0660   system     camera
+
+# ALP Audio
+/dev/srp                  0660   system     audio
+
+#mixer
+/dev/video16              0660   system     audio
+/dev/video17              0660   system     system
+/dev/video18              0660   system     system
+/dev/video19              0660   system     system
+
+#CEC
+/dev/CEC                  0660   system     system
+
+# JPEG
+/dev/video11              0660   media      media
+/dev/video12              0660   media      media
+/dev/video13              0660   media      media
+/dev/video14              0660   media      media
+
+# camera
+/dev/video40              0660   media      media
+/dev/video41              0660   media      media
+/dev/video42              0660   media      media
+/dev/video43              0660   media      media
+/dev/video44              0660   media      media
+/dev/video45              0660   media      media
+/dev/video46              0660   media      media
+/dev/video47              0660   media      media
+/dev/video48              0660   media      media
+/dev/media2               0660   media      media
+
+# MobiCore
+/dev/mobicore             0700   system     system
+/dev/mobicore-user        0666   radio     	system
+
+# Secure MEM driver
+/dev/s5p-smem             0660   system     system
+
+# vfs
+/dev/vfsspi        0660   system     system
+
+# USB Driver
+/dev/ttyUSB*              0660   system     usb
+/dev/usb/lp*              0660   system     usb

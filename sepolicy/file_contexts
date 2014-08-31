@@ -1,0 +1,2 @@
+# label graphics device with a new type, we need
+# to allow write operation from appdomain

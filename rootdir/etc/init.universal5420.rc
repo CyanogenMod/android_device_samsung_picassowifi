@@ -1,0 +1,579 @@
+import init.universal5420.usb.rc
+import init.wifi.rc
+
+on init
+
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/media_rw/extSdCard 0700 media_rw media_rw
+    mkdir /mnt/media_rw/UsbDriveA 0700 media_rw media_rw
+    mkdir /mnt/media_rw/UsbDriveB 0700 media_rw media_rw
+    mkdir /mnt/media_rw/UsbDriveC 0700 media_rw media_rw
+    mkdir /mnt/media_rw/UsbDriveD 0700 media_rw media_rw
+    mkdir /mnt/media_rw/UsbDriveE 0700 media_rw media_rw
+    mkdir /mnt/media_rw/UsbDriveF 0700 media_rw media_rw
+    
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /storage/emulated 0555 root root    
+
+    export EXTERNAL_STORAGE /storage/emulated/legacy
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
+
+    # Support legacy paths
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+
+    # map "real" external storages paths also in same way. backwards compatibility.
+    symlink /storage/extSdCard /mnt/extSdCard
+    symlink /storage/UsbDriveA /mnt/UsbDriveA
+    symlink /storage/UsbDriveB /mnt/UsbDriveB
+    symlink /storage/UsbDriveC /mnt/UsbDriveC
+    symlink /storage/UsbDriveD /mnt/UsbDriveD
+    symlink /storage/UsbDriveE /mnt/UsbDriveE
+    symlink /storage/UsbDriveF /mnt/UsbDriveF
+
+    export SECONDARY_STORAGE /storage/extSdCard
+    
+    mkdir /storage/extSdCard 0700 root root
+    mkdir /storage/UsbDriveA 0700 root root
+    mkdir /storage/UsbDriveB 0700 root root
+    mkdir /storage/UsbDriveC 0700 root root
+    mkdir /storage/UsbDriveD 0700 root root
+    mkdir /storage/UsbDriveE 0700 root root
+    mkdir /storage/UsbDriveF 0700 root root
+
+    mkdir /efs 0771 radio system
+
+    #Private Mode
+    mkdir /mnt/shell/privatemode 0700 system system
+    mkdir /storage/Private 0000 system system
+
+on post-fs-data
+    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    mkdir /data/media 0770 media_rw media_rw
+    chown media_rw media_rw /data/media
+
+    setprop vold.post_fs_data_done 1
+
+# Permissions for bluetooth
+    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown radio net_bt_stack /efs/bluetooth/bt_addr
+    chmod 0640 /efs/bluetooth/bt_addr
+    chown bluetooth net_bt_stack /dev/ttySAC0
+    chmod 0660 /dev/ttySAC0
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+
+# For kernel lock in BT/WiFi race condtion
+    chmod 0600 /dev/btlock
+    chown bluetooth bluetooth /dev/btlock
+
+# Added for TZ Playready DRM Support
+    mkdir /efs/drm 0700 drm system
+    mkdir /efs/drm/playready 0775 drm system
+
+
+#Private Mode
+    mkdir /data/privatemode 0770 system system
+    chown system system /data/privatemode
+    restorecon /data/privatemode
+
+# Bluetooth dhcpcd config
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+    class main
+	disabled
+	oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    class late_start
+	disabled
+	oneshot
+
+on boot
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    setprop ro.radio.noril yes
+    stop ril-daemon
+
+    # Reduce reserved lowmem from ~48MB to ~12MB
+    write /proc/sys/vm/lowmem_reserve_ratio "128 128"
+
+    # Set up kernel tracing, but disable it by default
+    chmod 0222 /sys/kernel/debug/tracing/trace_marker
+    write /sys/kernel/debug/tracing/tracing_on 0
+
+    setprop ro.build.product universal_5420
+    setprop ro.product.device universal_5420
+#    chmod 0666 /dev/pvrsrvkm
+
+# mobicore
+    mkdir /data/app/mcRegistry 0775 system system
+    chmod 0700 /dev/mobicore
+    chmod 0666 /dev/mobicore-user
+    chmod 0660 /dev/s5p-smem    
+    chown system system /dev/mobicore
+    chown radio system /dev/mobicore-user
+    chown system system /dev/s5p-smem   
+
+# DRK permission
+    mkdir /efs/prov 0770 radio system
+    chown radio system /efs/prov_data
+    chmod 0770 /efs/prov_data
+    chown radio system /efs/prov_data/dev_root
+    chmod 0770 /efs/prov_data/dev_root
+    chown radio system /efs/prov_data/knox
+    chmod 0770 /efs/prov_data/knox
+    chown radio system /efs/prov_data/dev_root/dev_root.dat
+    chmod 0640 /efs/prov_data/dev_root/dev_root.dat
+    chown radio system /efs/prov/libdevkm.lock
+    chmod 0660 /efs/prov/libdevkm.lock
+    write /efs/prov/ffffffff00000000000000000000000c.tlbin 0
+    chown radio system /efs/prov/ffffffff00000000000000000000000c.tlbin
+    chmod 0660 /efs/prov/ffffffff00000000000000000000000c.tlbin
+
+# CS socket
+    mkdir /dev/socket/cs_socket 0770 system system
+
+# Permissions for gpio_keys
+    chown system radio /sys/class/sec/sec_key/wakeup_keys
+    write /sys/class/sec/sec_key/wakeup_keys 116,172
+
+# Permissions for TouchScreen
+    chown system radio /sys/class/sec/tsp/cmd
+    chown system radio /sys/class/input/input1/enabled
+    
+# Permissions for Touchkey
+    chown system radio /sys/class/sec/sec_touchkey/brightness
+    chown system radio /sys/class/sec/sec_touchkey/touchkey_menu
+    chown system radio /sys/class/sec/sec_touchkey/touchkey_back
+    chown system radio /sys/class/sec/sec_touchkey/touchkey_firm_version_panel
+    chown system radio /sys/class/sec/sec_touchkey/touchkey_firm_version_phone
+    chown system radio /sys/class/sec/sec_touchkey/touchkey_firm_update_status
+    chown system radio /sys/class/sec/sec_touchkey/touchkey_firm_update
+    chown system radio /sys/class/sec/sec_touchkey/touchkey_threshold
+    chown system radio /sys/class/sec/sec_touchkey/touchkey_factory_mode
+    chown system radio /sys/class/sec/sec_touchkey/touch_sensitivity
+    chown system radio /sys/class/sec/sec_touchkey/glove_mode
+    chown system radio /sys/class/sec/sec_touchkey/flip_mode
+    chown system radio /sys/class/sec/sec_touchkey/boost_level
+    chown system radio /sys/class/input/input9/enabled
+    chown system radio /sys/class/input/input10/enabled
+
+# SENSORS
+# Accelerometer_sensor
+    chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
+    chown system radio /sys/class/sensors/accelerometer_sensor/calibration
+    chown system radio /sys/class/sensors/accelerometer_sensor/reactive_alert
+    chown system radio /sys/class/sensors/accelerometer_sensor/vendor
+    chown system radio /sys/class/sensors/accelerometer_sensor/name
+# Proximity_sensor
+    chown system radio /sys/class/sensors/proximity_sensor/state
+    chown system radio /sys/class/sensors/proximity_sensor/raw_data
+    chown system radio /sys/class/sensors/proximity_sensor/prox_avg
+    chown system radio /sys/class/sensors/proximity_sensor/prox_cal
+    chown system radio /sys/class/sensors/proximity_sensor/vendor
+    chown system radio /sys/class/sensors/proximity_sensor/name
+    chown system radio /sys/class/sensors/proximity_sensor/thresh_high
+    chown system radio /sys/class/sensors/proximity_sensor/thresh_low
+    chown system radio /sys/class/sensors/proximity_sensor/barcode_emul_en
+# Light_sensor
+    chown system radio /sys/class/sensors/light_sensor/lux
+    chown system radio /sys/class/sensors/light_sensor/raw_data
+    chown system radio /sys/class/sensors/light_sensor/vendor
+    chown system radio /sys/class/sensors/light_sensor/name
+# Gyro_sensor
+    chown system radio /sys/class/sensors/gyro_sensor/power_on
+    chown system radio /sys/class/sensors/gyro_sensor/power_off
+    chown system radio /sys/class/sensors/gyro_sensor/temperature
+    chown system radio /sys/class/sensors/gyro_sensor/selftest
+    chown system radio /sys/class/sensors/gyro_sensor/selftest_dps
+    chown system radio /sys/class/sensors/gyro_sensor/vendor
+    chown system radio /sys/class/sensors/gyro_sensor/name
+# Barometer_sensor
+    chown system radio /sys/class/sensors/barometer_sensor/sea_level_pressure
+    chown system radio /sys/class/sensors/barometer_sensor/vendor
+    chown system radio /sys/class/sensors/barometer_sensor/name
+    chown system radio /sys/class/sensors/barometer_sensor/calibration
+# Magnetic_sensor
+    chown system radio /dev/akm8963
+    chown system radio /sys/class/sensors/magnetic_sensor/raw_data
+    chown system radio /sys/class/sensors/magnetic_sensor/vendor
+    chown system radio /sys/class/sensors/magnetic_sensor/name
+# Gesture_sensor
+    chown system radio /sys/class/sensors/gesture_sensor/vendor
+    chown system radio /sys/class/sensors/gesture_sensor/name
+    chown system radio /sys/class/sensors/gesture_sensor/raw_data
+    chown system radio /sys/class/sensors/gesture_sensor/ir_current
+    chown system radio /sys/class/sensors/gesture_sensor/selftest
+# Temphumidity_sensor
+    chown system radio /sys/class/sensors/temphumidity_sensor/vendor
+    chown system radio /sys/class/sensors/temphumidity_sensor/name
+    chown system radio /sys/class/sensors/temphumidity_sensor/engine_ver
+    chown system radio /sys/class/sensors/temphumidity_sensor/send_accuracy
+
+# Permissions Camera
+    chown system radio /sys/class/camera/rear/rear_camfw
+    chown system radio /sys/class/camera/rear/rear_camfw_full
+    chown system radio /sys/class/camera/rear/rear_camtype
+    chown system radio /sys/class/camera/rear/rear_calcheck
+    chown system radio /sys/class/camera/rear/isp_core
+    chown system radio /sys/class/camera/flash/rear_flash
+    chown system radio /sys/class/camera/front/front_camfw
+    chown system radio /sys/class/camera/front/front_camtype
+
+# OTG_TEST
+    chown system radio /sys/class/host_notify/usb_otg/booster
+    chmod 0660 /sys/class/host_notify/usb_otg/booster
+
+# SSWAP
+    write /proc/sys/vm/swappiness 130
+
+# PMS DVFS
+    chown radio system /sys/power/cpufreq_table
+    chown radio system /sys/power/cpufreq_max_limit
+    chown radio system /sys/power/cpufreq_min_limit
+    chmod 0660 /sys/power/cpufreq_table
+    chmod 0660 /sys/power/cpufreq_max_limit
+    chmod 0660 /sys/power/cpufreq_min_limit
+    chown radio system /sys/class/devfreq/exynos5-busfreq-mif/en_monitoring
+    chown radio system /sys/class/devfreq/exynos5-busfreq-int/en_monitoring
+    chmod 0664 /sys/class/devfreq/exynos5-busfreq-mif/en_monitoring
+    chmod 0664 /sys/class/devfreq/exynos5-busfreq-int/en_monitoring
+    chown radio system /sys/class/devfreq/exynos5-busfreq-mif/freq_table
+    chown radio system /sys/class/devfreq/exynos5-busfreq-int/freq_table
+    chown radio system /sys/class/devfreq/exynos5-busfreq-mif/min_freq
+    chown radio system /sys/class/devfreq/exynos5-busfreq-int/min_freq
+    chown radio system /sys/class/devfreq/exynos5-busfreq-mif/max_freq
+    chown radio system /sys/class/devfreq/exynos5-busfreq-int/max_freq
+    chown radio system /sys/devices/platform/mali.0/dvfs_table
+    chown radio system /sys/devices/platform/mali.0/dvfs_min_lock
+    chown radio system /sys/devices/platform/mali.0/dvfs_max_lock
+    chown radio system /sys/class/thermal/thermal_zone0/boost_mode
+    chmod 664 /sys/class/devfreq/exynos5-busfreq-mif/freq_table
+    chmod 664 /sys/class/devfreq/exynos5-busfreq-int/freq_table
+    chmod 664 /sys/class/devfreq/exynos5-busfreq-mif/min_freq
+    chmod 664 /sys/class/devfreq/exynos5-busfreq-int/min_freq
+    chmod 664 /sys/class/devfreq/exynos5-busfreq-mif/max_freq
+    chmod 664 /sys/class/devfreq/exynos5-busfreq-int/max_freq
+    chmod 664 /sys/devices/platform/mali.0/dvfs_table
+    chmod 664 /sys/devices/platform/mali.0/dvfs_min_lock
+    chmod 664 /sys/devices/platform/mali.0/dvfs_max_lock
+    chmod 664 /sys/class/thermal/thermal_zone0/boost_mode
+
+# Core Control
+    chown radio system /sys/devices/system/b.L/b.L_core_stat
+    chmod 0660 /sys/devices/system/b.L/b.L_core_stat
+    chown radio system /sys/devices/system/cpu/cpu0/cpuidle/state1/disable
+    chown radio system /sys/devices/system/cpu/cpu1/cpuidle/state1/disable
+    chown radio system /sys/devices/system/cpu/cpu2/cpuidle/state1/disable
+    chown radio system /sys/devices/system/cpu/cpu3/cpuidle/state1/disable
+    chmod 0660 /sys/devices/system/cpu/cpu0/cpuidle/state1/disable
+    chmod 0660 /sys/devices/system/cpu/cpu1/cpuidle/state1/disable
+    chmod 0660 /sys/devices/system/cpu/cpu2/cpuidle/state1/disable
+    chmod 0660 /sys/devices/system/cpu/cpu3/cpuidle/state1/disable
+
+# Core temp sensor
+    chown radio system /sys/devices/platform/exynos5-tmu/temp
+    chown radio system /sys/devices/platform/exynos5-tmu/curr_temp
+
+# Quadrant Benchmark
+    chown radio system /sys/class/thermal/thermal_zone0/boost_mode
+    chown radio system /sys/class/devfreq/exynos5-busfreq-mif/min_freq
+    chown radio system /sys/class/devfreq/exynos5-busfreq-int/min_freq
+    chown radio system /sys/devices/system/cpu/cpufreq/iks-cpufreq/min_freq
+    chown radio system /sys/devices/system/cpu/cpufreq/iks-cpufreq/max_freq
+    chown radio system /sys/devices/system/cpu/cpufreq/iks-cpufreq/freq_table
+    chown radio system /sys/devices/system/cpu/cpufreq/iks-cpufreq/max_eagle_count
+#    chown radio system /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock
+#    chown radio system /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock
+#    chown radio system /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_table
+    chmod 0664 /sys/class/thermal/thermal_zone0/boost_mode
+    chmod 0664 /sys/class/devfreq/exynos5-busfreq-mif/min_freq
+    chmod 0664 /sys/class/devfreq/exynos5-busfreq-int/min_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/iks-cpufreq/min_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/iks-cpufreq/max_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/iks-cpufreq/freq_table
+    chmod 0664 /sys/devices/system/cpu/cpufreq/iks-cpufreq/max_eagle_count
+#    chmod 0664 /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock
+#    chmod 0664 /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock
+#    chmod 0664 /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_table
+
+# CPU Idle
+    chown system radio /sys/devices/system/cpu/cpu0/cpuidle/state2/disable
+    chown system radio /sys/module/cpuidle/parameters/enable_mask
+
+    chown system radio /sys/module/asv_exynos/parameters/asv_group
+
+# MTP permission
+    chmod 0660 /dev/usb_mtp_gadget
+    chown system mtp /dev/usb_mtp_gadget
+
+# terminal mode
+	chmod 0660 /sys/class/android_usb/android0/terminal_version
+	chown system system /sys/class/android_usb/android0/terminal_version
+
+# for datarouter
+    chown system system /dev/dun
+    chown system system /dev/ttyGS0
+    chown system system /dev/ttyGS1
+    chown system system /dev/ttyGS2
+    chown system system /dev/ttyGS3
+
+# GPIO DVS
+    chown radio system /sys/class/secgpio_check/secgpio_check_all/gpioinit_check
+    chown radio system /sys/class/secgpio_check/secgpio_check_all/gpiosleep_check
+    chown radio system /sys/class/secgpio_check/secgpio_check_all/checked_sleepGPIO
+
+# Permissions for Barcode Emul
+    chown system radio /sys/class/sec/sec_barcode_emul/barcode_send
+    chown system radio /sys/class/sec/sec_barcode_emul/barcode_ver_check
+    chown system radio /sys/class/sec/sec_barcode_emul/barcode_led_status
+
+on fs
+
+# Support Preload install apks
+    mkdir /preload 0771 system system
+
+    mount_all /fstab.universal5420
+    setprop ro.crypto.fuse_sdcard true
+
+    chown radio system /efs
+    chmod 0771 /efs
+
+#For Absolute Persistence Partition 
+    mkdir /persdata 0755 system system 
+    mkdir /persdata/absolute 0750 system system 
+      
+    wait /dev/block/platform/dw_mmc.0/by-name/PERSDATA 
+    check_fs /dev/block/platform/dw_mmc.0/by-name/PERSDATA ext4 
+    mount ext4 /dev/block/platform/dw_mmc.0/by-name/PERSDATA /persdata/absolute nosuid nodev barrier=1 
+      
+    chown system system /persdata 
+    chmod 0755 /persdata 
+    chown system system /persdata/absolute 
+    chmod 0750 /persdata/absolute
+
+
+# Permissions for backlight
+    chown system system /sys/class/backlight/panel/brightness
+    chown system system /sys/class/backlight/panel/auto_brightness
+
+# Permissions for LCD
+    chown system radio /sys/class/lcd/panel/lcd_type
+    chown system system /sys/class/lcd/panel/power_reduce
+    chown system system /sys/class/lcd/panel/siop_enable
+    chown system system /sys/class/lcd/panel/temperature
+
+# Permissions for MDNIE
+    chown system media_rw /sys/class/mdnie/mdnie/mode
+    chown system media_rw /sys/class/mdnie/mdnie/scenario
+    chown system system /sys/class/mdnie/mdnie/accessibility
+    chown system system  /sys/class/mdnie/mdnie/bypass
+    chown system system /sys/class/mdnie/mdnie/auto_brightness
+    chown system system /sys/class/mdnie/mdnie/sensorRGB
+
+# Switch Device
+    chown system radio /sys/class/sec/switch/usb_state
+    chown system radio /sys/class/sec/switch/chg_type
+
+# Audio (Earjack)
+    chown system radio /sys/class/audio/earjack/select_jack
+    chown system radio /sys/class/audio/earjack/key_state
+    chown system radio /sys/class/audio/earjack/state
+
+# GPS
+    chown root system /dev/ttySAC1
+    chmod 0660 /dev/ttySAC1
+    chown root system /sys/class/sec/gps/GPS_PWR_EN/value
+    chmod 0664 /sys/class/sec/gps/GPS_PWR_EN/value
+    mkdir /data/system 0771 system system
+    chown system system /data/system
+    mkdir /data/system/gps 0771 system system
+    chown system system /data/system/gps
+    rm /data/gps_started
+    rm /data/glonass_started
+    rm /data/beidou_started
+    rm /data/smd_started
+    rm /data/sv_cno.info
+
+# Fingerprint
+    mkdir /dev/validity 0770 system system
+
+# virtual sdcard daemon running as media_rw (1023)
+service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
+    class late_start
+    
+service fuse_extSdCard /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/extSdCard /storage/extSdCard
+    class late_start
+    disabled
+
+service fuse_UsbDriveA /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/UsbDriveA /storage/UsbDriveA
+    class late_start
+    disabled
+
+service fuse_UsbDriveB /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/UsbDriveB /storage/UsbDriveB
+    class late_start
+    disabled
+
+service fuse_UsbDriveC /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/UsbDriveC /storage/UsbDriveC
+    class late_start
+    disabled
+
+service fuse_UsbDriveD /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/UsbDriveD /storage/UsbDriveD
+    class late_start
+    disabled
+
+service fuse_UsbDriveE /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/UsbDriveE /storage/UsbDriveE
+    class late_start
+    disabled
+
+service fuse_UsbDriveF /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/UsbDriveF /storage/UsbDriveF
+    class late_start
+    disabled
+
+# Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
+service watchdogd /sbin/watchdogd 10 20
+    class core
+    seclabel u:r:watchdogd:s0
+    disabled
+
+# Bluetooth LE 2 wired Test
+service LE_dut_cmd_on /system/bin/bttestintf enable
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+service LE_dut_cmd_off /system/bin/bttestintf disable
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+service bttestdaemon /system/bin/bttestd
+    class main
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
+# for ethernet
+service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
+    class main
+    disabled
+    oneshot
+
+# Kick watchdogd if debug_level is low
+on property:ro.debug_level=0x4f4c
+    start watchdogd
+
+# on userdebug and eng builds, enable kgdb on the serial console
+on property:ro.debuggable=1
+    write /sys/module/kgdboc/parameters/kgdboc ttyFIQ1
+    write /sys/module/fiq_debugger/parameters/kgdb_enable 1
+
+# GPS
+service gpsd /system/bin/gpsd -c /system/etc/gps.xml
+    class main
+    user gps
+    group system inet net_raw
+    ioprio be 0
+
+# MobiCore startup
+service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF000000000000000000000001.drbin -r /system/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin
+    class core
+    user system
+    group system  
+
+#Private Mode
+service privatemode /system/bin/sdcard /data/privatemode /mnt/shell/privatemode 1000 1000
+    class late_start
+    oneshot
+
+# LPM
+on property:ro.bootmode=charger
+    mount ext4 /dev/block/mmcblk0p18 /system wait ro
+    copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
+
+on property:ro.bootmode=charger
+    class_start sec-charger
+
+service playlpm /system/bin/lpm
+    class sec-charger
+    critical
+
+# service for TZPR provisioning version check app
+service scranton_RD /system/bin/scranton_RD
+     class main
+     user root
+     disabled
+     oneshot
+
+# start for TZPR provisioning version check app
+on property:sys.mobicoredaemon.enable=true
+    start scranton_RD
+
+# Secure Storage startup
+service secure_storage /system/bin/secure_storage_daemon
+    class core
+    user system
+    group system
+    disabled
+
+# SENSOR FRAMEWORK : starts fingerprintService
+service vcsFPService /system/bin/vcsFPService
+    class late_start
+    user system
+    group system
+
+on property:ro.securestorage.support=true
+    mkdir /dev/.secure_storage
+    chmod 0711 /dev/.secure_storage
+    chown system system /dev/.secure_storage
+    restorecon -R /dev/.secure_storage
+    start secure_storage
+
+# CS service
+service cs_service /system/bin/cs
+    class main
+    user system
+    group system
+    disabled
+
+service TvoutService_C /system/bin/bintvoutservice
+     class main
+     user system
+     group graphics
+on property:ro.SecEDS.enable=false
+    stop TvoutService_C
+
+on property:sys.mobicoredaemon.enable=true
+    start cs_service
+
+# umount service
+service umount_service /system/bin/umount /preload
+    disabled
+    oneshot
+    
+# Support Preload install apks
+on property:persist.sys.storage_preload=1
+    mount ext4 /dev/block/mmcblk0p20 /preload nosuid nodev ro barrier=1
+    setprop storage.preload.complete 1
+
+on property:persist.sys.storage_preload=0
+    start umount_service
+
+# SSWAP
+service swapon /sbin/sswap -s
+    class core
+    user root
+    group root
+    seclabel u:r:sswap:s0
+    oneshot
+
+# IR LED
+on property:sys.boot_completed=1
+    chown system radio /sys/class/sec/sec_ir/ir_send
+    chown system radio /sys/class/sec/sec_ir/ir_send_result
