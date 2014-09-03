@@ -141,11 +141,10 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="OMX.SEC.vp8.dec" type="video/x-vnd.on2.vp8" >
             <Quirk name="decoder-ignores-streamcorrupt-error" />
         </MediaCodec>        
-<!-- 
         <MediaCodec name="OMX.SEC.hevc.sw.dec" type="video/hevc" >
             <Quirk name="decoder-ignores-streamcorrupt-error" />
         </MediaCodec>
--->
+
         <MediaCodec name="OMX.SEC.amr.dec">
             <Type name="audio/amr-wb" />
             <Type name="audio/3gpp"  />
@@ -178,10 +177,6 @@ Only the three quirks included above are recognized at this point:
             <Quirk name="decoder-ignores-streamcorrupt-error" />
         </MediaCodec>
         <MediaCodec name="OMX.SEC.wma.dec" type="audio/x-ms-wma" >
-            <Quirk name="needs-flush-before-disable" />
-            <Quirk name="decoder-ignores-streamcorrupt-error" />
-        </MediaCodec>
-        <MediaCodec name="OMX.SEC.adpcm.dec" type="audio/x-ima" >
             <Quirk name="needs-flush-before-disable" />
             <Quirk name="decoder-ignores-streamcorrupt-error" />
         </MediaCodec>
@@ -219,8 +214,6 @@ Only the three quirks included above are recognized at this point:
 		    <Quirk name="decoder-lies-about-samplingrate" />
         </MediaCodec>
         <MediaCodec name="OMX.google.vorbis.decoder" type="audio/vorbis" />
-        <MediaCodec name="OMX.google.gsm.decoder" type="audio/gsm" />
-
         <MediaCodec name="OMX.google.raw.decoder" type="audio/raw" />
         <MediaCodec name="OMX.google.mpeg4.decoder" type="video/mp4v-es" />
         <MediaCodec name="OMX.google.h263.decoder" type="video/3gpp" />

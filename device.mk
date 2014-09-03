@@ -49,10 +49,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.recovery.universal5420.rc:/init.recovery.universal5420.rc
 
-# Bluetooth
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/bluetooth/bcm4350_prepatch.hcd:system/vendor/firmware/bcm4350_prepatch.hcd
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.primary.universal5420 \
