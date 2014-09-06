@@ -1,2 +1,95 @@
 # label graphics device with a new type, we need
 # to allow write operation from appdomain
+/dev/akm8963            u:object_r:akm_device:s0
+
+/dev/bcm2079x           u:object_r:nfc_device:s0
+/dev/ttySAC0            u:object_r:hci_attach_dev:s0
+/dev/ttySAC1            u:object_r:gps_device:s0
+
+/dev/mobicore           u:object_r:tee_device:s0
+/dev/mobicore-user      u:object_r:tee_device:s0
+
+/dev/v4l-subdev[0-9]*   u:object_r:video_device:s0
+/dev/media0             u:object_r:video_device:s0
+/dev/media1             u:object_r:video_device:s0
+
+/dev/video16            u:object_r:video_device:s0
+/dev/video17            u:object_r:video_device:s0
+/dev/video18            u:object_r:video_device:s0
+/dev/video19            u:object_r:video_device:s0
+
+/dev/video40            u:object_r:camera_device:s0
+/dev/video41            u:object_r:camera_device:s0
+/dev/video42            u:object_r:camera_device:s0
+/dev/video43            u:object_r:camera_device:s0
+/dev/video44            u:object_r:camera_device:s0
+/dev/media2             u:object_r:camera_device:s0
+
+/efs/bluetooth(/.*)?    u:object_r:bluetooth_efs_file:s0
+
+/system/bin/mcDriverDaemon  --  u:object_r:tee_exec:s0
+
+##### Samsung
+/dev/block/vnswap0		u:object_r:swap_device:s0
+/dev/b.L.*			u:object_r:ap_device:s0
+/dev/bL.*			u:object_r:ap_device:s0
+/dev/cpu.*			u:object_r:ap_device:s0
+/dev/kfc_freq_min	u:object_r:ap_device:s0
+/dev/snd/pcmC[0-9]*D[0-9]*c u:object_r:audio_capture_device:s0
+/dev/btlock			u:object_r:bluetooth_device:s0 
+/dev/diag	u:object_r:diag_device:s0
+/dev/dumpstate	u:object_r:dumpstate_device:s0
+/dev/block/platform/dw_mmc.*    u:object_r:dw_mmc_device:s0
+/dev/ecryptfs		u:object_r:ecryptfs_device:s0
+/dev/block/platform/msm_sdcc.1/by-name/param		u:object_r:emmcblk_device:s0
+/dev/block/mmcblk0p[0-9]*    u:object_r:emmcblk_device:s0
+/dev/block/mmcblk[0-9]*	   u:object_r:emmcblk_device:s0
+/dev/block/mmcblk1p.*   u:object_r:emmcblk_device:s0
+/dev/block/mmcblk1p1    u:object_r:emmcblk_device:s0
+/dev/hsicctl[0-3]*	u:object_r:hsic_device:s0
+/dev/i2c.*		u:object_r:i2c_device:s0
+/dev/batch_io	u:object_r:io_device:s0
+/dev/link_pm		u:object_r:radio_device:s0
+/dev/keychord		u:object_r:keychord_device:s0
+/dev/dek_evt	u:object_r:knox_dar_device:s0
+/dev/dek_kek	u:object_r:knox_dar_device:s0
+/dev/dek_log	u:object_r:knox_dar_device:s0
+/dev/dek_req	u:object_r:knox_dar_device:s0
+/dev/mbin.*	u:object_r:mbin_device:s0
+/dev/mdns			u:object_r:mdns_device:s0
+/dev/ehci_power         u:object_r:mif_device:s0
+/dev/umts.*			u:object_r:mif_device:s0 
+/dev/block/modem(/.*)?	u:object_r:modem_device:s0
+/dev/multipdp			u:object_r:multipdp_device:s0 
+#/dev/__properties__		u:object_r:prop_device:s0
+/dev/psaux			u:object_r:psaux_device:s0
+/dev/pts(/.*)?			u:object_r:pts_device:s0
+/dev/pvr_sync	u:object_r:pvrsync_device:s0
+/dev/dir_enc_report	u:object_r:report_device:s0
+/dev/s5p-smem	u:object_r:s5p_smem_device:s0
+/dev/.secure_storage(/.*)?		u:object_r:secure_storage_device:s0
+/dev/seiren		u:object_r:seiren_device:s0
+/dev/shtc1_sensor	u:object_r:sensor_device:s0
+/dev/srp		u:object_r:srp_device:s0
+/dev/sw_sync	u:object_r:sync_device:s0
+/dev/timerirq	u:object_r:timerirq_device:s0
+/dev/tzic	u:object_r:tzic_device:s0
+/dev/ttySAC[0-9]*	u:object_r:uart_device:s0
+/dev/validity(/.*)?	u:object_r:validity_device:s0
+/dev/vfsspi	u:object_r:vfsspi_device:s0
+/dev/tspdrv     u:object_r:vibrator_device:s0 
+/dev/mvpkm		u:object_r:vmware_device:s0
+/dev/hw_random		u:object_r:hw_random_device:s0
+/dev/ttyGS[0-9]*	u:object_r:usb_serial_device:s0
+/dev/mdm			u:object_r:mdm_device:s0
+/dev/fimg2d(/.*)?     	u:object_r:fimg2d_video_device:s0
+/dev/socket/epm     u:object_r:epm_socket:s0
+/dev/socket/mtpd		u:object_r:mtpd_socket:s0
+/dev/socket/kipc   u:object_r:kipc_socket:s0
+/dev/socket/cfiat  u:object_r:cfiat_socket:s0
+/dev/socket/msockets(/.*)?	u:object_r:msockets_socket:s0
+
+# DRM
+/data/data/.drm(/.*)?	u:object_r:drm_data_file:s0
+/system/etc/security/.drm	u:object_r:drm_security_system_file:s0
+/system/lib/drm			u:object_r:drm_lib_system_file:s0

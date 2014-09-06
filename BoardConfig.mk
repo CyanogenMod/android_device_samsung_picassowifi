@@ -93,8 +93,19 @@ RECOVERY_GRAPHICS_USE_LINELENGTH := true
 BOARD_SEPOLICY_DIRS += \
     device/samsung/picassowifi/sepolicy
 
-BOARD_SEPOLICY_UNION := \
-    file_contexts 
+BOARD_SEPOLICY_UNION += \
+    genfs_contexts \
+    adbd.te \
+    app.te \
+    device.te \
+    domain.te \
+    gpsd.te \
+    file.te \
+    mediaserver.te \
+    surfaceflinger.te \
+    samsung_media.te \
+    samsung_drm.te \
+    system.te
 
 # Audio
 BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true

@@ -1,0 +1,14 @@
+allow mediaserver s5p_smem_device : file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton execute_no_trans entrypoint execmod open audit_access };
+allow mediaserver s5p_smem_device : dir { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton add_name remove_name reparent search rmdir open audit_access execmod };
+allow mediaserver s5p_smem_device : lnk_file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton open audit_access execmod };
+allow mediaserver s5p_smem_device : chr_file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton execute_no_trans entrypoint execmod open audit_access };
+allow mediaserver s5p_smem_device : blk_file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton open audit_access execmod };
+allow mediaserver s5p_smem_device : sock_file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton open audit_access execmod };
+allow mediaserver s5p_smem_device : fifo_file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton open audit_access execmod };
+allow media_app s5p_smem_device : file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton execute_no_trans entrypoint execmod open audit_access };
+allow media_app s5p_smem_device : dir { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton add_name remove_name reparent search rmdir open audit_access execmod };
+allow media_app s5p_smem_device : lnk_file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton open audit_access execmod };
+allow media_app s5p_smem_device : chr_file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton execute_no_trans entrypoint execmod open audit_access };
+allow media_app s5p_smem_device : blk_file { getattr };
+allow media_app s5p_smem_device : sock_file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton open audit_access execmod };
+allow media_app s5p_smem_device : fifo_file { ioctl read write create getattr setattr lock relabelfrom append unlink link rename execute swapon quotaon mounton open audit_access execmod };
