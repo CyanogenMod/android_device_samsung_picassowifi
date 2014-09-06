@@ -58,6 +58,10 @@ PRODUCT_PACKAGES += \
     mixer_paths.xml \
     tinymix
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.universal5420
