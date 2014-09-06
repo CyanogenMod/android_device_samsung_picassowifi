@@ -4,18 +4,22 @@ vendor/firmware/srp_data.bin
 vendor/firmware/srp_vliw.bin
 
 # Bluetooth
-vendor/firmware/bcm4335.hcd
-vendor/firmware/bcm4335_A0.hcd
-vendor/firmware/bcm4335_murata.hcd
-vendor/firmware/bcm4335_semco.hcd
+vendor/firmware/BT_FW_VER_BCM4339_003.001.009.0031.0136_ORC_N1-3G.hcd
 
 # OemCrypto
 vendor/lib/liboemcrypto.so
 
 # Camera
-# lib/hw/camera.universal5420.so
-# lib/libexynoscamera.so
-# lib/libvdis.so
+lib/hw/camera.universal5420.so
+lib/libak8963c.so
+lib/libarcsoft_flawlessface.so
+lib/libarcsoft_nighthawk.so
+lib/libarcsoft_night_shot.so
+lib/libarcsoft_panorama_burstcapture.so
+lib/libarcsoft_picaction_manual.so
+lib/libarcsoft_picaction.so
+lib/libarcsoft_sensorndk.so
+lib/libarcsoft_skin_soften.so
 
 # Graphics
 vendor/lib/egl/libGLES_mali.so
