@@ -4,6 +4,10 @@ vendor/firmware/srp_data.bin
 vendor/firmware/srp_vliw.bin
 
 # Bluetooth
+vendor/firmware/bcm4335.hcd
+vendor/firmware/bcm4335_A0.hcd
+vendor/firmware/bcm4335_murata.hcd
+vendor/firmware/bcm4335_semco.hcd
 vendor/firmware/BT_FW_VER_BCM4339_003.001.009.0031.0136_ORC_N1-3G.hcd
 
 # OemCrypto
@@ -20,11 +24,27 @@ lib/libarcsoft_picaction_manual.so
 lib/libarcsoft_picaction.so
 lib/libarcsoft_sensorndk.so
 lib/libarcsoft_skin_soften.so
+lib/libexynoscamera.so
+
+# DRM
+lib/libdrmdecrypt.so
+lib/libstagefright_hdcp.so
+lib/libwvdrm_L1.so
+lib/libWVStreamControlAPI_L1.so
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libwvm.so
+vendor/lib/mediadrm/libwvdrmengine.so
 
 # Graphics
 vendor/lib/egl/libGLES_mali.so
 vendor/lib/libmalicore.bc
 vendor/lib/libRSDriverArm.so
+
+# GPS
+bin/gpsd
+etc/gps.conf
+etc/gps.xml
+lib/hw/gps.default.so
 
 # Bcc
 lib/libbcc.sha1.so
@@ -82,3 +102,4 @@ etc/wifi/nvram_net.txt
 # Input
 usr/idc/Synaptics_HID_TouchPad.idc
 usr/keylayout/gpio-keys.kl
+usr/keylayout/Generic.kl
