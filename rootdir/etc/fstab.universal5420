@@ -12,10 +12,5 @@
 /dev/block/platform/dw_mmc.0/by-name/USERDATA   /data        ext4      nosuid,nodev,noatime,noauto_da_alloc,discard,journal_async_commit,errors=panic    wait,check,encryptable=footer
 
 # VOLD
-/devices/platform/dw_mmc.2/mmc_host/mmc2                                         auto                    vfat    default     voldmanaged=extSdCard:auto,noemulatedsd
-/devices/platform/exynos-dwc3.0/exynos-xhci.0/usb2*sda,/devices/usb.1/12000000.dwc3/xhci-hcd.2.auto/usb2*sda            auto                    vfat    default     voldmanaged=UsbDriveA:auto
-/devices/platform/exynos-dwc3.0/exynos-xhci.0/usb2*sdb,/devices/usb.1/12000000.dwc3/xhci-hcd.2.auto/usb2*sdb            auto                    vfat    default     voldmanaged=UsbDriveB:auto
-/devices/platform/exynos-dwc3.0/exynos-xhci.0/usb2*sdc,/devices/usb.1/12000000.dwc3/xhci-hcd.2.auto/usb2*sdc            auto                    vfat    default     voldmanaged=UsbDriveC:auto
-/devices/platform/exynos-dwc3.0/exynos-xhci.0/usb2*sdd,/devices/usb.1/12000000.dwc3/xhci-hcd.2.auto/usb2*sdd            auto                    vfat    default     voldmanaged=UsbDriveD:auto
-/devices/platform/exynos-dwc3.0/exynos-xhci.0/usb2*sde,/devices/usb.1/12000000.dwc3/xhci-hcd.2.auto/usb2*sde            auto                    vfat    default     voldmanaged=UsbDriveE:auto
-/devices/platform/exynos-dwc3.0/exynos-xhci.0/usb2*sdf,/devices/usb.1/12000000.dwc3/xhci-hcd.2.auto/usb2*sdf            auto                    vfat    default     voldmanaged=UsbDriveF:auto
+/devices/platform/dw_mmc.2/mmc_host/mmc2                auto            auto    default         voldmanaged=sdcard1:auto
+/devices/platform/exynos-dwc3.0/exynos-xhci.0/          auto            auto    default         voldmanaged=usbdisk:auto
