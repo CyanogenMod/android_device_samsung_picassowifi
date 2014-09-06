@@ -1,5 +1,5 @@
 import init.universal5420.usb.rc
-import init.wifi.rc
+import init.universal5420.wifi.rc
 
 on init
 
