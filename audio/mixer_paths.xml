@@ -41,9 +41,9 @@ INPUT_CHANNEL_MAP {
   <ctl name="EPOUT Input 2" value="AIF1RX2" />
   <ctl name="EPOUT Digital Switch" value="1" />
 
-  <!-- SPK(Mono) -->
+  <!-- SPK(Stereo) -->
   <ctl name="SPKOUTL Input 1" value="AIF1RX1" />
-  <ctl name="SPKOUTL Input 2" value="AIF1RX2" />
+  <ctl name="SPKOUTR Input 1" value="AIF1RX2" />
   <ctl name="Speaker Digital Switch" value="1" />
 
   <!-- HP(stereo) -->
@@ -67,6 +67,7 @@ INPUT_CHANNEL_MAP {
 
   <!-- CP->SPK -->
   <ctl name="SPKOUTL Input 3" value="None" />
+  <ctl name="SPKOUTR Input 3" value="None" />
 
   <!-- CP->HP -->
   <ctl name="HPOUT1L Input 2" value="None" />
