@@ -2,6 +2,9 @@
 # system.prop for picassowifi
 #
 
+# Set default USB interface
+persist.sys.usb.config=mtp
+
 lockscreen.rot_override=true
 ro.radio.noril=yes
 ro.sf.lcd_density=320
