@@ -14,40 +14,16 @@
 # limitations under the License.
 #
 
+LOCAL_PATH := device/samsung/picassowifi
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/samsung/picassowifi/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-# Overlays
+PRODUCT_CHARACTERISTICS := tablet
 DEVICE_PACKAGE_OVERLAYS += device/samsung/picassowifi/overlay
 
-include $(LOCAL_PATH)/BoardConfig.mk
-
-LOCAL_PATH := device/samsung/picassowifi
-
-PRODUCT_CHARACTERISTICS := tablet
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 2560
-TARGET_SCREEN_WIDTH := 1600
-
-# Ramdisk
-PRODUCT_PACKAGES += \
-    fstab.universal5420 \
-    init.universal5420.rc \
-    init.universal5420.usb.rc \
-    init.universal5420.wifi.rc \
-    lpm.rc \
-    ueventd.universal5420.rc
-
-# Recovery
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.universal5420.rc:/init.recovery.universal5420.rc
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -62,9 +38,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
 
-# GPS
-PRODUCT_PACKAGES += \
-    gps.universal5420
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2560
+TARGET_SCREEN_WIDTH := 1600
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -77,27 +53,19 @@ PRODUCT_PACKAGES += \
     e2fsck \
     setup_fs
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.universal5420
+
 # HW composer
 PRODUCT_PACKAGES += \
     libion \
     hwcomposer.exynos5 \
     gralloc.exynos5
 
-# Sensors
-PRODUCT_PACKAGES += \
-    sensors.universal5420
-
 # IR
 PRODUCT_PACKAGES += \
     consumerir.exynos5
-
-# MobiCore setup
-PRODUCT_PACKAGES += \
-    libMcClient \
-    libMcRegistry \
-    libPaApi \
-    libgdmcprov \
-    mcDriverDaemon
 
 # Media profile
 PRODUCT_COPY_FILES += \
@@ -108,46 +76,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# Samsung
+# MobiCore setup
 PRODUCT_PACKAGES += \
-    SamsungServiceMode
-
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
-
-# Radio
-PRODUCT_PACKAGES += \
-    libsecril-client \
-    libsecril-client-sap
-
-# Wifi
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
-
-PRODUCT_PACKAGES += \
-    libnetcmdiface \
-    macloader
-
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
-# Enable repeatable keys in CWM
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cwm.enable_key_repeat=true \
-    ro.cwm.repeatable_keys=114,115
-
-# System properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=320 \
-    ro.opengles.version=196608 \
-    ro.sapa.jack.master=alsa \
-    ro.hdcp2.rx=tz \
-    ro.secwvk=220 \
-    ro.securestorage.support=true
+    libMcClient \
+    libMcRegistry \
+    libPaApi \
+    libgdmcprov \
+    mcDriverDaemon
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -171,28 +106,40 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.universal5420 \
+    init.universal5420.rc \
+    init.universal5420.usb.rc \
+    init.universal5420.wifi.rc \
+    lpm.rc \
+    ueventd.universal5420.rc
 
-# Radio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10 \
-    keyguard.no_require_sim=true
+# Recovery
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.recovery.universal5420.rc:/init.recovery.universal5420.rc
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hwui.texture_cache_size=96 \
-    ro.hwui.layer_cache_size=64 \
-    ro.hwui.path_cache_size=16 \
-    ro.hwui.shape_cache_size=4 \
-    ro.hwui.gradient_cache_size=2 \
-    ro.hwui.drop_shadow_cache_size=8 \
-    ro.hwui.texture_cache_flushrate=0.5 \
-    ro.hwui.text_small_cache_width=1024 \
-    ro.hwui.text_small_cache_height=512 \
-    ro.hwui.text_large_cache_width=2048 \
-    ro.hwui.text_large_cache_height=1024
+# Samsung
+PRODUCT_PACKAGES += \
+    SamsungServiceMode
+
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.universal5420
+
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
+
+# Wifi
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
+PRODUCT_PACKAGES += \
+    libnetcmdiface \
+    macloader
 
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
