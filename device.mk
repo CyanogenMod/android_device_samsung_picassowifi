@@ -123,6 +123,11 @@ PRODUCT_PACKAGES += \
     lpm.rc \
     ueventd.universal5420.rc
 
+# Radio (needed for audio controls even on wifi-only)
+PRODUCT_PACKAGES += \
+    libsecril-client \
+    libsecril-client-sap
+
 # Recovery
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.recovery.universal5420.rc:/init.recovery.universal5420.rc
