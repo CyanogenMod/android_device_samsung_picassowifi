@@ -25,6 +25,9 @@ lib/libarcsoft_picaction.so
 lib/libarcsoft_sensorndk.so
 lib/libarcsoft_skin_soften.so
 lib/libexynoscamera.so
+lib/libliveframework.so
+lib/libsecnativefeature.so
+lib/libvdis.so
 
 # DRM
 lib/libdrmdecrypt.so
