@@ -71,6 +71,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl
 
+# Keystore
+PRODUCT_PACKAGES += \
+    keystore.exynos5
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.universal5420
@@ -129,12 +133,8 @@ PRODUCT_PACKAGES += \
     libsecril-client-sap
 
 # Recovery
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.universal5420.rc:/init.recovery.universal5420.rc
-
-# Samsung
 PRODUCT_PACKAGES += \
-    SamsungServiceMode
+    init.recovery.universal5420.rc
 
 # Sensors
 PRODUCT_PACKAGES += \
