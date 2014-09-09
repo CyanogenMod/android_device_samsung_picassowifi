@@ -6,10 +6,6 @@
 ro.sapa.jack.master=alsa
 ro.hdcp2.rx=tz
 
-# Other
-ro.secwvk=220
-ro.securestorage.support=true
-
 # UI
 lockscreen.rot_override=true
 ro.sf.lcd_density=320
@@ -29,6 +25,15 @@ ro.hwui.text_large_cache_height=1024
 
 # USB
 persist.sys.usb.config=mtp
+ro.adb.qemud=1
 
 # Radio
 ro.radio.noril=yes
+
+# Randomly from stock
+ro.kernel.qemu=0
+ro.ril.gprsclass=10
+ro.ril.hsxpa=1
+ro.sec.fle.encryption=true
+ro.secwvk=220
+ro.securestorage.support=true
