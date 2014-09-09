@@ -35,3 +35,6 @@ ro.ril.hsxpa=1
 ro.sec.fle.encryption=true
 ro.secwvk=220
 ro.securestorage.support=true
+
+# Wifi
+wifi.interface=wlan0

@@ -34,10 +34,17 @@ lib/libvdis.so
 lib/libdrmdecrypt.so
 lib/libstagefright_hdcp.so
 lib/libwvdrm_L1.so
+lib/libWVphoneAPI.so
 lib/libWVStreamControlAPI_L1.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libwvm.so
 vendor/lib/mediadrm/libwvdrmengine.so
+lib/omx/libOMX.Exynos.AVC.Decoder.so
+lib/omx/libOMX.Exynos.AVC.Encoder.so
+lib/omx/libOMX.Exynos.MPEG4.Decoder.so
+lib/omx/libOMX.Exynos.MPEG4.Encoder.so
+lib/omx/libOMX.Exynos.VP8.Decoder.so
+lib/omx/libOMX.Exynos.VP8.Encoder.so
 
 # Graphics
 vendor/lib/egl/libGLES_mali.so
