@@ -55,7 +55,7 @@
 #define PCM_DEVICE 0
 #define PCM_DEVICE_VOICE 1
 #define PCM_DEVICE_SCO 2
-#define PCM_DEVICE_IN 3
+#define PCM_DEVICE_IN 0
 
 #define MIXER_CARD 0
 

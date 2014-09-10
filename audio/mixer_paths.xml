@@ -1,8 +1,8 @@
 <mixer>
 <!--
 INOUT_MAP {
-  <ctl name="Earpiece", "Builtin Mic", "Back Mic" />
-  <ctl name="Speaker", "Back Mic", "Third Mic" />
+  <ctl name="Earpiece", "Builtin Mic" />
+  <ctl name="Speaker", "Builtin Mic" />
   <ctl name="Headset Out", "Headset In" />
   <ctl name="Headphone", "Builtin Mic" />
   <ctl name="SCO Headset Out", "SCO Headset In" />
@@ -347,7 +347,6 @@ INPUT_CHANNEL_MAP {
       <path name="channel-stereo" />
       <path name="aif2-stereo-mic" />
       <path name="builtin-mic" />
-      <path name="back-mic" />
   </path>
 
   <path name="voice-headset-mic">
@@ -365,7 +364,6 @@ INPUT_CHANNEL_MAP {
   <path name="media-second-mic">
       <path name="channel-right" />
       <path name="aif2-stereo-mic" />
-      <path name="back-mic" />
   </path>
 
   <path name="media-headset-mic">
@@ -378,6 +376,8 @@ INPUT_CHANNEL_MAP {
       <path name="channel-left" />
       <path name="aif2-stereo-mic" />
       <path name="builtin-mic" />
+      <ctl name="IN1L Volume" value="27" />
+      <ctl name="IN1L Digital Volume" value="152" />
   </path>
 
   <path name="communication-main-mic">
