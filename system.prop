@@ -25,7 +25,6 @@ ro.hwui.text_large_cache_height=1024
 
 # USB
 persist.sys.usb.config=mtp
-ro.adb.qemud=1
 
 # Radio
 ro.radio.noril=yes
