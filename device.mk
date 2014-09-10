@@ -125,8 +125,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
 # Ramdisk
+TARGET_PROVIDES_INIT_RC := true
+
 PRODUCT_PACKAGES += \
     fstab.universal5420 \
+    init.samsung.rc \
     init.universal5420.rc \
     init.universal5420.usb.rc \
     init.universal5420.wifi.rc \

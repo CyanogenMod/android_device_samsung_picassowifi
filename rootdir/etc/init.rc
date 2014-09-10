@@ -544,12 +544,19 @@ service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-sys
 service drm /system/bin/drmserver
     class main
     user drm
-    group drm system inet drmrpc
+# Samsung changed: [ SEC_MM_DRM
+# fix
+    group system drm inet drmrpc sdcard_r sdcard_rw media_rw radio shell
+# org
+#    group drm system inet drmrpc
+# ]
 
 service media /system/bin/mediaserver
     class main
     user media
-    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc qcom_diag mediadrm
+    # Samsung changed:
+    # group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc qcom_diag mediadrm
+    group system audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm sdcard_rw sdcard_r media_rw shell lgt_gid
     ioprio rt 4
 
 service bootanim /system/bin/bootanimation

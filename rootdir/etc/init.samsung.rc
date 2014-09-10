@@ -1,0 +1,50 @@
+#
+# Changes that Samsung made to /init.rc, keeping them separate to keep
+# the init.universal5420.rc file closer to stock.
+#
+
+on post-fs-data
+# SA, System SW, SAMSUNG create log directory
+    mkdir /data/log 0775 system log
+    chown system log /data/log
+    mkdir /data/anr 0775 system system
+    chown system system /data/anr
+    chmod 0775 /data/log
+    chmod 0775 /data/anr
+    restorecon /data/log
+    restorecon /data/anr
+
+#drm permission
+    mkdir /efs/drm 0774 drm system
+
+# [ SEC_MM_DRM
+    # sdrm
+    mkdir /efs/drm 0774 drm system
+    mkdir /efs/drm/sdrm 0774 drm system
+    mkdir /efs/drm/sdrm/data_agent 0774 drm system
+    restorecon /efs/drm
+    restorecon /efs/drm/sdrm
+    restorecon /efs/drm/data_agent
+
+    # DRM directory creation
+    mkdir /system/etc/security/.drm 0775
+    chown root root /system/etc/security/.drm
+    chmod 0775 /system/etc/security/.drm
+
+    # Added for Playready DRM Support
+    mkdir /data/data/.drm 0775
+    chown drm system /data/data/.drm
+    chmod 0775 /data/data/.drm
+    mkdir /data/data/.drm/.playready 0775
+    chown drm system /data/data/.drm/.playready
+    chmod 0775 /data/data/.drm/.playready
+
+    # Added drm folder to copy drm plugins
+    mkdir /system/lib/drm 0775
+    chown root root /system/lib/drm
+    chmod 0775 /system/lib/drm
+    restorecon -R /efs
+#]
+
+    mkdir /mnt/shell 0750 shell shell
+    mkdir /mnt/media_rw 0750 media_rw media_rw

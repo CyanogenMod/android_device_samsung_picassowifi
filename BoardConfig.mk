@@ -66,6 +66,9 @@ BOARD_USE_BGRA_8888 := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 5
 # OVERRIDE_RS_DRIVER := libRSDriverArm.so
 
+# Init
+TARGET_NR_SVC_SUPP_GIDS := 20
+
 # Battery
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := battery

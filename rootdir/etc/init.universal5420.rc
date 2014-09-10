@@ -1,5 +1,6 @@
 import init.universal5420.usb.rc
 import init.universal5420.wifi.rc
+import init.samsung.rc
 
 on init
     # Set permissions for persist partition
