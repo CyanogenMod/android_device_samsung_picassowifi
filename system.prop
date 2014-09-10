@@ -31,7 +31,6 @@ ro.adb.qemud=1
 ro.radio.noril=yes
 
 # Randomly from stock
-ro.kernel.qemu=0
 ro.ril.gprsclass=10
 ro.ril.hsxpa=1
 ro.sec.fle.encryption=true
