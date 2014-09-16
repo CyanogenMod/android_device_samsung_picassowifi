@@ -362,8 +362,10 @@ INPUT_CHANNEL_MAP {
   </path>
 
   <path name="media-second-mic">
-      <path name="channel-right" />
+      <path name="channel-left" />
       <path name="aif2-stereo-mic" />
+      <path name="builtin-mic" />
+      <ctl name="IN1L Volume" value="25" />
   </path>
 
   <path name="media-headset-mic">
