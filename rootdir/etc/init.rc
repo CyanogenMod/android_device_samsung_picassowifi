@@ -541,7 +541,7 @@ service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-sys
     onrestart restart media
     onrestart restart netd
 
-service drm /system/bin/drmserver
+service drm /system/bin/drmserver.samsung
     class main
     user drm
 # Samsung changed: [ SEC_MM_DRM
