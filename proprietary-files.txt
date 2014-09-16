@@ -14,8 +14,7 @@ vendor/firmware/BT_FW_VER_BCM4339_003.001.009.0031.0136_ORC_N1-3G.hcd
 vendor/lib/liboemcrypto.so
 
 # Camera
-# TODO: Remove the destination mapping as that breaks pulling from a device
-lib/hw/camera.universal5420.so:lib/hw/camera.vendor.universal5420.so
+lib/hw/camera.vendor.universal5420.so
 lib/libak8963c.so
 lib/libarcsoft_flawlessface.so
 lib/libarcsoft_nighthawk.so
