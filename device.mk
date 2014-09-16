@@ -102,6 +102,13 @@ PRODUCT_PACKAGES += \
     libpcap \
     tcpdump
 
+# OMX
+PRODUCT_PACKAGES += \
+    libcsc \
+    libExynosOMX_Core \
+    libOMX.Exynos.MP3.Decoder \
+    libstagefrighthw \
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
@@ -168,4 +175,3 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalv
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/samsung/picassowifi/picassowifi-vendor.mk)
-$(call inherit-product, hardware/samsung_slsi/exynos5/exynos5.mk)
