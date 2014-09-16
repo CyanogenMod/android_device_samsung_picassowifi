@@ -57,10 +57,6 @@ etc/gps.conf
 etc/gps.xml
 lib/hw/gps.default.so
 
-# Bcc
-lib/libbcc.sha1.so
-lib/libbcc.so
-
 # LPM
 bin/lpm
 lib/libQmageDecoder.so
