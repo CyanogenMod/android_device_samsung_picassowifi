@@ -61,6 +61,9 @@ on post-fs-data
     mkdir /efs/drm 0700 drm system
     mkdir /efs/drm/playready 0775 drm system
 
+    #Create directory for hostapd
+    mkdir /data/hostapd 0770 system wifi
+
 # Bluetooth dhcpcd config
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     class main
@@ -527,3 +530,10 @@ service swapon /sbin/sswap -s
     user root
     group root
     oneshot
+
+service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
+    class late_start
+    user root
+    group root
+    oneshot
+    disabled
