@@ -56,7 +56,7 @@ COMMON_GLOBAL_CFLAGS += -DSAMSUNG_DVFS
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_CONFIG := cyanogenmod_picassowifi_defconfig
-TARGET_KERNEL_SOURCE := kernel/samsung/picassowifi
+TARGET_KERNEL_SOURCE := kernel/samsung/exynos5420
 
 # Battery
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
