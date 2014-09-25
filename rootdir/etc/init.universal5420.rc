@@ -465,15 +465,13 @@ service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF0000000000000
     class core
     user system
     group system    
-    
-# LPM
-on property:ro.bootmode=charger
-    mount ext4 /dev/block/mmcblk0p18 /system wait ro
 
-on property:ro.bootmode=charger
+# LPM
+on charger
+    mount ext4 /dev/block/mmcblk0p18 /system wait ro
     class_start sec-charger
 
-service playlpm /system/bin/lpm
+service sec-playlpm /system/bin/lpm
     class sec-charger
     critical
 

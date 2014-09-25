@@ -59,7 +59,6 @@ TARGET_KERNEL_CONFIG := cyanogenmod_picassowifi_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/exynos5420
 
 # Battery
-BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := battery
 
 # Boot animation
