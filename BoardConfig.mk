@@ -25,13 +25,10 @@ TARGET_SOC := exynos5420
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_ARCH_VARIANT_CPU := cortex-a15
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_CPU_VARIANT := cortex-a15
-APP_ABI := armeabi-v7a
-ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Audio
 BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
@@ -60,10 +57,6 @@ TARGET_KERNEL_SOURCE := kernel/samsung/exynos5420
 
 # Battery
 BOARD_BATTERY_DEVICE_NAME := battery
-
-# Boot animation
-TARGET_BOOTANIMATION_PRELOAD := true
-TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := universal5420
