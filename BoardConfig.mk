@@ -82,6 +82,9 @@ BOARD_USES_HWC_SERVICES := true
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+# Hardware
+BOARD_HARDWARE_CLASS += device/samsung/picassowifi/cmhw
+
 # Init
 TARGET_NR_SVC_SUPP_GIDS := 20
 

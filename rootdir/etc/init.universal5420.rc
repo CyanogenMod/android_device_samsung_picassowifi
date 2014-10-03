@@ -146,6 +146,7 @@ on boot
     chown system radio /sys/class/sec/sec_touchkey/touchkey_threshold
     chown system system /sys/devices/virtual/sec/sec_touchkey/brightness
     chown system radio /sys/class/sec/sec_touchkey/extra_button_event
+    chown root system /sys/class/sec/sec_touchkey/tsp_keys_enabled
 
 # Permissions for gpio_keys
     chown radio system /sys/class/sec/sec_key/wakeup_keys
