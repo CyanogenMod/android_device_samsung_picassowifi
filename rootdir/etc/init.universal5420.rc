@@ -45,6 +45,12 @@ on early-init
 on property:sys.boot_completed=1
     write /sys/block/mmcblk0/queue/scheduler row
 
+    # Configure the cpu-boost module
+    write /sys/module/cpu_boost/parameters/boost_ms 10
+    write /sys/module/cpu_boost/parameters/sync_threshold 1500000
+    write /sys/module/cpu_boost/parameters/input_boost_freq 1200000
+    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+
 on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
