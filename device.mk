@@ -132,6 +132,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
+# Power
+PRODUCT_PACKAGES += \
+    power.universal5420
+
 # Ramdisk
 TARGET_PROVIDES_INIT_RC := true
 
