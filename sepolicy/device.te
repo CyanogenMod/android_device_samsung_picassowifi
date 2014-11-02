@@ -43,6 +43,7 @@ type radioblk_device, dev_type;
 type recoveryblk_device, dev_type;
 type report_device, dev_type;
 type s5p_smem_device, dev_type;
+type secmem_device, dev_type;
 type secure_storage_device, dev_type;
 type seiren_device, dev_type;
 type sensor_device, dev_type;
