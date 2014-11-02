@@ -147,7 +147,6 @@ BOARD_SEPOLICY_UNION := \
     surfaceflinger.te \
     samsung_media.te \
     system.te
-#    samsung_drm.te
 
 # SurfaceFlinger
 BOARD_USES_SYNC_MODE_FOR_MEDIA := true
