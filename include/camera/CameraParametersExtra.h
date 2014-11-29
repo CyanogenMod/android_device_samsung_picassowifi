@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include "camera/CameraParametersExtraDurationTimer.h"
+
 #define CAMERA_PARAMETERS_EXTRA_C \
 const char CameraParameters::KEY_CITYID[] = "cityid"; \
 const char CameraParameters::KEY_WEATHER[] = "weather"; \
@@ -23,6 +25,7 @@ extern "C" { \
     void acquire_dvfs_lock(void) { } \
     void release_dvfs_lock(void) { } \
 } \
+CAMERA_PARAMETERS_EXTRA_C_DURATION_TIMER \
 \
 /* LAST_LINE OF CAMERA_PARAMETERS_EXTRA_C, every line before this one *MUST* have
  * a backslash \ at the end of the line or else everything will break.
