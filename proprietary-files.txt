@@ -10,9 +10,6 @@ vendor/firmware/bcm4335_murata.hcd
 vendor/firmware/bcm4335_semco.hcd
 vendor/firmware/BT_FW_VER_BCM4339_003.001.009.0031.0136_ORC_N1-3G.hcd
 
-# OemCrypto
-vendor/lib/liboemcrypto.so
-
 # Camera
 lib/hw/camera.vendor.universal5420.so
 lib/libak8963c.so
@@ -31,14 +28,17 @@ lib/libvdis.so
 
 # DRM
 bin/drmserver.samsung
-lib/libdrmdecrypt.so
 lib/libstagefright_hdcp.so
-lib/libwvdrm_L1.so
-lib/libWVphoneAPI.so
-lib/libWVStreamControlAPI_L1.so
-vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libdrmdecrypt.so
+vendor/lib/liboemcrypto.so
+vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
+vendor/lib/libWVphoneAPI.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
+
 lib/omx/libOMX.Exynos.AVC.Decoder.so
 lib/omx/libOMX.Exynos.AVC.Encoder.so
 lib/omx/libOMX.Exynos.MPEG4.Decoder.so
