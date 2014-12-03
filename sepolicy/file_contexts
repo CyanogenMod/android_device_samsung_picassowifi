@@ -1,6 +1,5 @@
 /dev/mali0              u:object_r:gpu_device:s0
 
-/dev/bcm2079x           u:object_r:nfc_device:s0
 /dev/ttySAC0            u:object_r:hci_attach_dev:s0
 /dev/ttySAC1            u:object_r:gps_device:s0
 /dev/s5p-smem           u:object_r:secmem_device:s0
@@ -32,13 +31,13 @@
 
 /data/app/tlcd_sock     u:object_r:drmserver_socket:s0
 
-/data/nfc(/.*)?         u:object_r:nfc_data_file:s0
-
-/factory(/.*)?          u:object_r:efs_file:s0
-/factory/bluetooth(/.*)?        u:object_r:bluetooth_efs_file:s0
+/data/.wifiver.info     u:object_r:wifi_data_file:s0
+/efs/wifi(/.*)?         u:object_r:wifi_efs_file:s0
 
 /system/bin/mcDriverDaemon  --  u:object_r:tee_exec:s0
+/system/bin/drmserver.samsung   u:object_r:drmserver_exec:s0
+/system/bin/gpsd                u:object_r:gpsd_exec:s0
 
-/sys/devices/platform/bcm43241_bluetooth/rfkill/rfkill0/state -- u:object_r:sysfs_bluetooth_writable:s0
-/sys/devices/platform/bcm43241_bluetooth/rfkill/rfkill0/type -- u:object_r:sysfs_bluetooth_writable:s0
-/sys/devices/virtual/power_supply/manta-battery/charge_enabled u:object_r:sysfs_charge_enabled:s0
+/sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/state -- u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/platform/bcm4339_bluetooth/rfkill/rfkill0/type -- u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/virtual/sec/sec_touchkey/tsp_keys_enabled u:object_r:sysfs_input_file:s0

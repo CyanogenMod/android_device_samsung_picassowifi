@@ -134,11 +134,15 @@ BOARD_SEPOLICY_UNION += \
 	device.te \
 	domain.te \
 	drmserver.te \
-	healthd.te \
-	gpsd.te \
 	file.te \
+	gpsd.te \
+	init.te \
 	mediaserver.te \
-	system_server.te
+	servicemanager.te \
+	surfaceflinger.te \
+	system_app.te \
+	system_server.te \
+	wpa.te
 
 # SurfaceFlinger
 BOARD_USES_SYNC_MODE_FOR_MEDIA := true
