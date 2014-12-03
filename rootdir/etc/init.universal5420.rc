@@ -352,6 +352,10 @@ on fs
     mkdir /preload 0771 system system
 
     mount_all /fstab.universal5420
+
+    # Try to deal with upgraded system by forcing a restorecon of all data
+    restorecon -rvDF /data/
+
     setprop ro.crypto.fuse_sdcard true
 
 #For Absolute Persistence Partition 
