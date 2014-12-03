@@ -126,22 +126,19 @@ RECOVERY_GRAPHICS_USE_LINELENGTH := true
 BOARD_USES_SCALER := true
 
 # SELinux
-BOARD_SEPOLICY_DIRS := \
-    device/samsung/picassowifi/sepolicy
+BOARD_SEPOLICY_DIRS += \
+	device/samsung/picassowifi/sepolicy
 
-BOARD_SEPOLICY_UNION := \
-    file_contexts \
-    genfs_contexts \
-    adbd.te \
-    app.te \
-    device.te \
-    domain.te \
-    gpsd.te \
-    file.te \
-    mediaserver.te \
-    surfaceflinger.te \
-    samsung_media.te \
-    system.te
+BOARD_SEPOLICY_UNION += \
+	file_contexts \
+	device.te \
+	domain.te \
+	drmserver.te \
+	healthd.te \
+	gpsd.te \
+	file.te \
+	mediaserver.te \
+	system_server.te
 
 # SurfaceFlinger
 BOARD_USES_SYNC_MODE_FOR_MEDIA := true
