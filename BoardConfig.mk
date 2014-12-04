@@ -139,7 +139,6 @@ BOARD_SEPOLICY_UNION += \
 	init.te \
 	mediaserver.te \
 	servicemanager.te \
-	surfaceflinger.te \
 	system_app.te \
 	system_server.te \
 	wpa.te
