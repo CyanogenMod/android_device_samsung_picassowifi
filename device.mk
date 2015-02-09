@@ -39,7 +39,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # Boot animation
-TARGET_BOOTANIMATION_HALF_RES := true
+TARGET_SAVE_RAM_IN_BOOTANIMATION := true
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1600
 
