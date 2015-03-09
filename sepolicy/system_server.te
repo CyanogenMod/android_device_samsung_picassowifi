@@ -1,3 +1,5 @@
+allow system_server sysfs_input_file:file rw_file_perms;
+
 allow system_server efs_file:file { read open write };
 allow system_server efs_file:dir search;
 
