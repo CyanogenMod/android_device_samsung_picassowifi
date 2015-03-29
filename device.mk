@@ -139,9 +139,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.universal5420
 
-# Ramdisk
-TARGET_PROVIDES_INIT_RC := true
-
 PRODUCT_PACKAGES += \
     fstab.universal5420 \
     init.samsung.rc \
