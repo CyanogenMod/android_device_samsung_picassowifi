@@ -15,7 +15,7 @@ INPUT_CHANNEL_MAP {
   <ctl name="Back Mic", "Right" />
   <ctl name="Headset In", "Left" />
   <ctl name="Third Mic", "Left" />
-  <ctl name="SCO Headset In" value="None" />
+  <ctl name="SCO Headset In", value="None" />
 }
 -->
 

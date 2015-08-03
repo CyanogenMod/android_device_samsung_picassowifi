@@ -8,11 +8,11 @@ vendor/firmware/bcm4335.hcd
 vendor/firmware/bcm4335_A0.hcd
 vendor/firmware/bcm4335_murata.hcd
 vendor/firmware/bcm4335_semco.hcd
-vendor/firmware/BT_FW_VER_BCM4339_003.001.009.0031.0136_ORC_N1-3G.hcd
+vendor/firmware/bcm4350.hcd
+vendor/firmware/BT_FW_VER_BCM4354_003.001.012.0147.0158_ORC_V2-WIFI.hcd
 
 # Camera
 lib/hw/camera.vendor.universal5420.so
-lib/libak8963c.so
 lib/libarcsoft_flawlessface.so
 lib/libarcsoft_nighthawk.so
 lib/libarcsoft_night_shot.so
@@ -38,7 +38,6 @@ vendor/lib/libWVStreamControlAPI_L1.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
-
 lib/omx/libOMX.Exynos.AVC.Decoder.so
 lib/omx/libOMX.Exynos.AVC.Encoder.so
 lib/omx/libOMX.Exynos.MPEG4.Decoder.so
@@ -61,8 +60,8 @@ lib/hw/gps.default.so
 bin/lpm
 lib/libQmageDecoder.so
 media/battery_batteryerror.qmg
-media/battery_charging_5.qmg
 media/battery_charging_10.qmg
+media/battery_charging_100.qmg
 media/battery_charging_15.qmg
 media/battery_charging_20.qmg
 media/battery_charging_25.qmg
@@ -70,6 +69,7 @@ media/battery_charging_30.qmg
 media/battery_charging_35.qmg
 media/battery_charging_40.qmg
 media/battery_charging_45.qmg
+media/battery_charging_5.qmg
 media/battery_charging_50.qmg
 media/battery_charging_55.qmg
 media/battery_charging_60.qmg
@@ -80,7 +80,6 @@ media/battery_charging_80.qmg
 media/battery_charging_85.qmg
 media/battery_charging_90.qmg
 media/battery_charging_95.qmg
-media/battery_charging_100.qmg
 media/battery_error.qmg
 media/chargingwarning.qmg
 
@@ -115,19 +114,45 @@ bin/scranton_RD
 
 # Sensors
 lib/hw/sensors.universal5420.so
+lib/hw/sensors.goldfish.so
+lib/libak09911c.so
+
 
 # Widevine
-# vendor/lib/libwvm.so
-# vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L1.so
 
 # Wifi
 etc/wifi/bcmdhd_apsta.bin
+etc/wifi/bcmdhd_ibss.bin
 etc/wifi/bcmdhd_mfg.bin
 etc/wifi/bcmdhd_sta.bin
-etc/wifi/bcmdhd_ibss.bin
+etc/wifi/bcmdhd_sta_tput.bin
+etc/wifi/bcmdhd_apsta.bin_4339_a0
+etc/wifi/bcmdhd_ibss.bin_4339_a0
+etc/wifi/bcmdhd_mfg.bin_4339_a0
+etc/wifi/bcmdhd_sta.bin_4339_a0
+etc/wifi/bcmdhd_apsta.bin_4354_a0
+etc/wifi/bcmdhd_ibss.bin_4354_a0
+etc/wifi/bcmdhd_mfg.bin_4354_a0
+etc/wifi/bcmdhd_sta.bin_4354_a0
+etc/wifi/bcmdhd_apsta.bin_4354_a1
+etc/wifi/bcmdhd_ibss.bin_4354_a1
+etc/wifi/bcmdhd_mfg.bin_4354_a1
+etc/wifi/bcmdhd_sta.bin_4354_a1
+etc/wifi/bcmdhd_apsta.bin_a0
+etc/wifi/bcmdhd_ibss.bin_a0
+etc/wifi/bcmdhd_mfg.bin_a0
+etc/wifi/bcmdhd_sta.bin_a0
+etc/wifi/bcmdhd_sta_tput.bin_a0
 etc/wifi/cred.conf
-etc/wifi/nvram_mfg.txt
-etc/wifi/nvram_net.txt
+etc/wifi/olsrd.conf
+etc/wifi/nvram_mfg.txt_4339_a0
+etc/wifi/nvram_net.txt_4339_a0
+etc/wifi/nvram_mfg.txt_4354_a0
+etc/wifi/nvram_net.txt_4354_a0
+etc/wifi/nvram_mfg.txt_4354_a1
+etc/wifi/nvram_net.txt_4354_a1
 
 # Input
 usr/idc/Synaptics_HID_TouchPad.idc

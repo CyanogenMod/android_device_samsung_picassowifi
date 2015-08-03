@@ -19,7 +19,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#define LOG_TAG "Picassowifi PowerHAL"
+#define LOG_TAG "v2wifixx PowerHAL"
 #include <utils/Log.h>
 
 #include <hardware/hardware.h>
@@ -74,7 +74,7 @@ struct power_module HAL_MODULE_INFO_SYM = {
         .module_api_version = POWER_MODULE_API_VERSION_0_2,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = POWER_HARDWARE_MODULE_ID,
-        .name = "Picassowifi Power HAL",
+        .name = "v2wifixx Power HAL",
         .author = "The CyanogenMod Project",
         .methods = &power_module_methods,
     },

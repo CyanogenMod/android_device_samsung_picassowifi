@@ -14,12 +14,12 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/picassowifi
+LOCAL_PATH := device/samsung/v2wifixx
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 PRODUCT_CHARACTERISTICS := tablet
-DEVICE_PACKAGE_OVERLAYS += device/samsung/picassowifi/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/v2wifixx/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -177,7 +177,6 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant
 
-
 PRODUCT_PACKAGES += \
     libnetcmdiface \
     macloader
@@ -186,4 +185,4 @@ PRODUCT_PACKAGES += \
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/picassowifi/picassowifi-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/v2wifixx/v2wifixx-vendor.mk)

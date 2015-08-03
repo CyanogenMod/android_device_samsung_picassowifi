@@ -17,7 +17,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "SM-T520"
+#define BTM_DEF_LOCAL_NAME   "SM-T900"
 
 // Networking, Capturing, Object Transfer
 // MAJOR CLASS: COMPUTER

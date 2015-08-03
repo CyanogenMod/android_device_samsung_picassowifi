@@ -14,7 +14,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_POWERHAL_VARIANT),picassowifi)
+ifeq ($(TARGET_POWERHAL_VARIANT),v2wifixx)
 
 include $(CLEAR_VARS)
 
@@ -26,4 +26,4 @@ LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
 
-endif # TARGET_POWERHAL_VARIANT == picassowifi
+endif # TARGET_POWERHAL_VARIANT == v2wifixx

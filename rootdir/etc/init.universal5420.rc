@@ -213,7 +213,7 @@ on boot
     chown system radio /sys/class/sensors/barometer_sensor/name
     chown system radio /sys/class/sensors/barometer_sensor/calibration
 # Magnetic_sensor
-    chown system radio /dev/akm8963
+    chown system radio /dev/akm09911
     chown system radio /sys/class/sensors/magnetic_sensor/raw_data
     chown system radio /sys/class/sensors/magnetic_sensor/vendor
     chown system radio /sys/class/sensors/magnetic_sensor/name
@@ -233,7 +233,7 @@ on boot
     chown system radio /sys/class/camera/rear/rear_camfw
     chown system radio /sys/class/camera/rear/rear_camtype
     chown system radio /sys/class/camera/flash/rear_flash
-#    chown system radio /sys/class/camera/rear/isp_core
+#   chown system radio /sys/class/camera/rear/isp_core
     chown system radio /sys/class/camera/front/front_camfw
     chown system radio /sys/class/camera/front/front_camtype
 
@@ -410,8 +410,8 @@ on fs
     chmod 0664 /sys/class/sec/gps/GPS_PWR_EN/value
     mkdir /data/system 0771 system system
     chown system system /data/system
-    mkdir /data/system/gps 0771 system system
-    chown system system /data/system/gps
+    mkdir /data/system/gps 0751 gps system
+    chown gps system /data/system/gps
     rm /data/gps_started
     rm /data/glonass_started
     rm /data/smd_started
@@ -421,7 +421,7 @@ on fs
     chown system radio /sys/class/camera/rear/rear_camfw
     chown system radio /sys/class/camera/rear/rear_camtype
     chown system radio /sys/class/camera/flash/rear_flash
-#    chown system radio /sys/class/camera/rear/isp_core
+#   chown system radio /sys/class/camera/rear/isp_core
     chown system radio /sys/class/camera/front/front_camfw
     chown system radio /sys/class/camera/front/front_camtype
 
