@@ -43,7 +43,7 @@ on early-init
     write /sys/block/mmcblk0/queue/scheduler noop
 
 on property:sys.boot_completed=1
-    write /sys/block/mmcblk0/queue/scheduler row
+    setprop sys.io.scheduler bfq
 
     # Interactive governor
 
