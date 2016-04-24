@@ -43,8 +43,19 @@ on post-fs-data
     mkdir /system/lib/drm 0775
     chown root root /system/lib/drm
     chmod 0775 /system/lib/drm
-    restorecon -R /efs
+    restorecon_recursive /efs
 #]
 
     mkdir /mnt/shell 0750 shell shell
     mkdir /mnt/media_rw 0750 media_rw media_rw
+
+service_redefine drm /system/bin/drmserver.samsung
+    class main
+    user drm
+    group system drm inet drmrpc sdcard_r sdcard_rw media_rw radio shell
+
+service_redefine media /system/bin/mediaserver
+    class main
+    user media
+    group system audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm sdcard_rw sdcard_r media_rw shell lgt_gid qcom_diag
+    ioprio rt 4

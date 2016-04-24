@@ -24,6 +24,7 @@ ro.hwui.text_large_cache_width=2048
 ro.hwui.text_large_cache_height=1024
 
 # USB
+persist.sys.isUsbOtgEnabled=true
 persist.sys.usb.config=mtp
 
 # Radio
